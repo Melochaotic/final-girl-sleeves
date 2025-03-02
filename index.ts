@@ -29,7 +29,7 @@ fs.readFile(fileName, "utf8", (err, data) => {
     count70x121,
     count65x130,
   ] of rows) {
-    if (title === searchVal) {
+    if (title.toLowerCase() === searchVal.toLowerCase()) {
       console.log(
         `The "${title}" box was released in ${year}.\nIt currently has ${sleeveType.toUpperCase()} sleeves.\n\n` +
           `Type     | Card count\n` +
