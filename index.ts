@@ -2,7 +2,12 @@ import * as fs from "fs";
 import * as path from "path";
 import { exit } from "process";
 
-const searchVal = "Panic at Station 2891";
+const searchVal = process.argv[2];
+if (!searchVal) {
+  console.error("NO SEARCH TERM GIVEN");
+  exit(2);
+}
+
 const fileName = path.resolve("data/FinalGirlSleeves.csv");
 
 fs.readFile(fileName, "utf8", (err, data) => {
