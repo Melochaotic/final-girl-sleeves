@@ -8,6 +8,16 @@ Then I remembered @primeagen saying you should know how to open and edit a file 
 
 ## Running the project
 
+### Quick setup
+
+Since node V22.6.0 you can [run TypeScript natively](https://nodejs.org/en/learn/typescript/run-natively) so just run this to get started:
+
+```zsh
+node index.ts
+```
+
+### Full setup
+
 Install dependencies with:
 
 ```zsh
