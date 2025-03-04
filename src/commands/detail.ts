@@ -30,8 +30,8 @@ export default function detail() {
       if (title.toLowerCase() === searchTitle.toLowerCase()) {
         console.log(
           `The "${title}" box was released in ${year}.\nIt currently has ${sleeveType.toUpperCase()} sleeves.\n\n` +
-            `Type     | Card count\n` +
-            `---------|-------------------\n` +
+            `Type     | Count\n` +
+            `---------|-------\n` +
             `Standard | ${Number(countStandard) || "-"}\n` +
             `Euro     | ${Number(countEuro) || "-"}\n` +
             `70*121   | ${Number(count70x121) || "-"}\n` +
