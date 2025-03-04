@@ -39,3 +39,12 @@ Maybe eventually this will become an actual CLI program, using [commander](https
 ## Force PNPM because NPM is :poop:
 
 This project forces PNPM by following [this helpful guide](https://www.freecodecamp.org/news/how-to-force-use-yarn-or-npm/)
+
+## Features list
+- [x] Display game details & sleeve requirements by title
+- [ ] List all titles
+- [ ] Help command - List all commands (make this default when no args)
+- [ ] List titles of a type e.g. unsleeved
+- [ ] Count and/or percentage of sleeve type - aiming for 100% ryker
+- [ ] Update sleeve type?!?!?!
+- [ ] ...MOAR!
