@@ -13,7 +13,7 @@ Then I remembered [@ThePrimeagen](https://github.com/ThePrimeagen) saying you sh
 Since node V22.6.0 you can [run TypeScript natively](https://nodejs.org/en/learn/typescript/run-natively) so just run this to get started:
 
 ```zsh
-node index.ts
+node src/index.ts
 ```
 
 ### Full setup
@@ -27,7 +27,7 @@ pnpm i
 Then you can compile/run the code with:
 
 ```zsh
-pnpm run dev
+pnpm dev
 ```
 
 ## Tooling
@@ -41,6 +41,7 @@ Maybe eventually this will become an actual CLI program, using [commander](https
 This project forces PNPM by following [this helpful guide](https://www.freecodecamp.org/news/how-to-force-use-yarn-or-npm/)
 
 ## Features list
+
 - [x] Display game details & sleeve requirements by title
 - [ ] List all titles
 - [ ] Help command - List all commands (make this default when no args)
