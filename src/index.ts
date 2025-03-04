@@ -2,16 +2,13 @@ import * as fs from "fs";
 import * as path from "path";
 import { exit } from "process";
 
-const searchVal = process.argv[2];
-if (!searchVal) {
-  console.error("NO SEARCH TERM GIVEN");
-  exit(2);
-}
+const searchTitle = process.argv[2];
+if (!searchTitle) throw new Error("NO SEARCH TERM GIVEN");
 
 const fileName = path.resolve("data/FinalGirlSleeves.csv");
 
 fs.readFile(fileName, "utf8", (err, data) => {
-  if (err) console.error(err);
+  if (err) throw err;
 
   const rows = data
     .split("\n")
@@ -29,7 +26,7 @@ fs.readFile(fileName, "utf8", (err, data) => {
     count70x121,
     count65x130,
   ] of rows) {
-    if (title.toLowerCase() === searchVal.toLowerCase()) {
+    if (title.toLowerCase() === searchTitle.toLowerCase()) {
       console.log(
         `The "${title}" box was released in ${year}.\nIt currently has ${sleeveType.toUpperCase()} sleeves.\n\n` +
           `Type     | Card count\n` +
@@ -43,5 +40,5 @@ fs.readFile(fileName, "utf8", (err, data) => {
     }
   }
 
-  console.error("NO RECORD FOUND!");
+  throw new Error(`No record found for title: "${searchTitle}"`);
 });
