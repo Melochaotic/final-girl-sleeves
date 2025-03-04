@@ -17,8 +17,8 @@ export default function detail() {
       .split("\n")
       .map((row) => row.split(",").map((cell) => cell.trim()));
 
-    const titles = rows.shift();
-    if (!titles) throw new Error("No titles found");
+    const colTitles = rows.shift();
+    if (!colTitles) throw new Error("No column titles found");
 
     for (const [
       year,
