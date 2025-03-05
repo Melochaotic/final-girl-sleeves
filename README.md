@@ -44,8 +44,9 @@ This project forces PNPM by following [this helpful guide](https://www.freecodec
 
 - [x] Display game details & sleeve requirements by title
 - [X] List all titles
-- [ ] Help command - List all commands (make this default when no args)
+- [x] Help command - List all commands (make this default when no args)
 - [x] List titles of a type e.g. unsleeved
 - [ ] Count and/or percentage of sleeve type - aiming for 100% ryker
 - [ ] Update sleeve type?!?!?!
+- [ ] Improve `help` command: each command file should export help text to display here
 - [ ] ...MOAR!
