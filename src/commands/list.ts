@@ -1,5 +1,6 @@
 import { readFile } from "fs";
 import { resolve } from "path";
+import { styleText } from "util";
 import type { TableStructure } from "../types/TableStructure";
 
 export default function list() {
@@ -20,6 +21,8 @@ export default function list() {
       titleArr.push(row[1]); // title
     }
 
-    titleArr.sort().forEach((title) => console.log(title));
+    titleArr
+      .sort()
+      .forEach((title) => console.log(`* ${styleText(["yellow"], title)}`));
   });
 }
