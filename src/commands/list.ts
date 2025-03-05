@@ -1,11 +1,11 @@
-import * as fs from "fs";
-import * as path from "path";
+import { readFile } from "fs";
+import { resolve } from "path";
 import type { TableStructure } from "../types/TableStructure";
 
 export default function list() {
-  const fileName = path.resolve("data/FinalGirlSleeves.csv");
+  const fileName = resolve("data/FinalGirlSleeves.csv");
 
-  fs.readFile(fileName, "utf8", (err, data) => {
+  readFile(fileName, "utf8", (err, data) => {
     if (err) throw err;
 
     const rows = data

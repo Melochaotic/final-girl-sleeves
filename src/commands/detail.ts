@@ -1,16 +1,16 @@
-import * as fs from "fs";
-import * as path from "path";
-import { exit } from "process";
+import { readFile } from "fs";
+import { resolve } from "path";
+import { argv, exit } from "process";
 import { styleText } from "util";
 import type { TableStructure } from "../types/TableStructure";
 
 export default function detail() {
-  const searchTitle = process.argv[3];
+  const searchTitle = argv[3];
   if (!searchTitle) throw new Error("NO SEARCH TERM GIVEN");
 
-  const fileName = path.resolve("data/FinalGirlSleeves.csv");
+  const fileName = resolve("data/FinalGirlSleeves.csv");
 
-  fs.readFile(fileName, "utf8", (err, data) => {
+  readFile(fileName, "utf8", (err, data) => {
     if (err) throw err;
 
     const rows = data
