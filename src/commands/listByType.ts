@@ -1,12 +1,12 @@
 import { SleeveType, TableStructure } from "@/types/TableStructure";
-import * as fs from "fs";
-import * as path from "path";
+import { readFile } from "fs";
+import { resolve } from "path";
 import { argv } from "process";
 
 export default function listByType() {
   const sleeveType = argv[3] as SleeveType;
-  const fileName = path.resolve("data/FinalGirlSleeves.csv");
-  fs.readFile(fileName, "utf8", (err, data) => {
+  const fileName = resolve("data/FinalGirlSleeves.csv");
+  readFile(fileName, "utf8", (err, data) => {
     if (err) throw err;
 
     const rows = data
