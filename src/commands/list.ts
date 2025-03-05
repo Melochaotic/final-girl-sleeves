@@ -1,6 +1,7 @@
 import { TableStructure } from "@/types/TableStructure";
 import { readFile } from "fs";
 import { resolve } from "path";
+import { styleText } from "util";
 
 export default function list() {
   const fileName = resolve("data/FinalGirlSleeves.csv");
@@ -20,6 +21,8 @@ export default function list() {
       titleArr.push(row[1]); // title
     }
 
-    titleArr.sort().forEach((title) => console.log(title));
+    titleArr
+      .sort()
+      .forEach((title) => console.log(`* ${styleText(["yellow"], title)}`));
   });
 }

@@ -46,10 +46,10 @@ export default function detail() {
           `The "${title}" box was released in ${year}.\nIt currently has ${sleeveTypeText} sleeves.\n\n` +
             `Type     | Count\n` +
             `---------|-------\n` +
-            `Standard | ${Number(countStandard) || "-"}\n` +
-            `Euro     | ${Number(countEuro) || "-"}\n` +
-            `70*121   | ${Number(count70x121) || "-"}\n` +
-            `65*130   | ${Number(count65x130) || "-"}`,
+            `${styleText(["yellow"], "Standard")} | ${Number(countStandard) || "-"}\n` +
+            `${styleText(["yellow"], "Euro")}     | ${Number(countEuro) || "-"}\n` +
+            `${styleText(["yellow"], "70*121")}   | ${Number(count70x121) || "-"}\n` +
+            `${styleText(["yellow"], "65*130")}   | ${Number(count65x130) || "-"}`,
         );
         exit();
       }
