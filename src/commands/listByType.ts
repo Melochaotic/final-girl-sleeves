@@ -1,7 +1,7 @@
+import { SleeveType, TableStructure } from "@/types/TableStructure";
 import * as fs from "fs";
 import * as path from "path";
 import { argv } from "process";
-import { SleeveType, TableStructure } from "../types/TableStructure";
 
 export default function listByType() {
   const sleeveType = argv[3] as SleeveType;

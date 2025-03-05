@@ -1,6 +1,6 @@
+import { TableStructure } from "@/types/TableStructure";
 import * as fs from "fs";
 import * as path from "path";
-import { TableStructure } from "../types/TableStructure";
 
 export default function list() {
   const fileName = path.resolve("data/FinalGirlSleeves.csv");

@@ -1,8 +1,8 @@
+import { TableStructure } from "@/types/TableStructure";
 import * as fs from "fs";
 import * as path from "path";
 import { exit } from "process";
 import { styleText } from "util";
-import { TableStructure } from "../types/TableStructure";
 
 export default function detail() {
   const searchTitle = process.argv[3];
