@@ -1,6 +1,7 @@
 import { readFile } from "fs";
 import { resolve } from "path";
 import { argv } from "process";
+import { styleText } from "util";
 import type { SleeveType, TableStructure } from "../types/TableStructure";
 
 export default function listByType() {
@@ -25,8 +26,22 @@ export default function listByType() {
       }
     }
 
-    console.log(`${titleArr.length} games with ${sleeveType} Sleeves`);
+    const sleeveTypeColor =
+      sleeveType === "No" // Always wear protection
+        ? "red"
+        : sleeveType === "Ryker" // Aim to sleeve all w/ Ryker
+          ? "green"
+          : "yellow"; // Better than nothing
+
+    const sleeveTypeText = styleText(
+      [sleeveTypeColor, "bold"],
+      sleeveType.toUpperCase(),
+    );
+
+    console.log(`${titleArr.length} games with ${sleeveTypeText} Sleeves`);
     console.log(`-----------------------------`);
-    titleArr.sort().forEach((title) => console.log(`* ${title}`));
+    titleArr
+      .sort()
+      .forEach((title) => console.log(`* ${styleText(["yellow"], title)}`));
   });
 }
