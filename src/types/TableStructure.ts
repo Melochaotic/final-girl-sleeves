@@ -1,11 +1,11 @@
 export type SleeveType = "No" | "Standard" | "Premium" | "Ryker";
 
 export type TableStructure = [
-  number, // year
+  string, // year
   string, // title
   SleeveType, // sleeveType
-  number?, // countStandard
-  number?, // countEuro
-  number?, // count70x121
-  number?, // count65x130
+  string?, // countStandard
+  string?, // countEuro
+  string?, // count70x121
+  string?, // count65x130
 ];
