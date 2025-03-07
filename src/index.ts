@@ -1,16 +1,12 @@
-const commandArg = process.argv[2] ?? "help";
+import { fileURLToPath } from "url";
 
 (async () => {
-  let cmd;
-  const cmdPath = `./commands/${commandArg}`;
+  const commandArg = process.argv[2] ?? "help";
 
-  try {
-    // Check if TS compiled to JS
-    cmd = await import(`${cmdPath}.js`);
-  } catch {
-    // else try TS extension
-    cmd = await import(`${cmdPath}.ts`);
-  }
+  const __filename = fileURLToPath(import.meta.url);
+  const ext = __filename.split(".").pop();
+  const cmdPath = `./commands/${commandArg}.${ext}`;
 
-  return cmd.default();
+  const { default: route } = await import(cmdPath);
+  return route();
 })();
