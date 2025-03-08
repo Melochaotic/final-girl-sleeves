@@ -2,7 +2,7 @@ import { readFile } from "fs";
 import { resolve } from "path";
 import { argv } from "process";
 import { styleText } from "util";
-import type { SleeveType, TableStructure } from "../types/TableStructure";
+import type { SleeveType, TableRow } from "../types/TableStructure";
 import { formatSleeveType } from "../utils/formatting.mts";
 
 export default function listByType() {
@@ -21,7 +21,7 @@ export default function listByType() {
     if (!colTitles) throw new Error("No column titles found");
 
     const titleArr: string[] = [];
-    for (const row of rows as TableStructure[]) {
+    for (const row of rows as TableRow[]) {
       if (row[2].toLowerCase() === sleeveType.toLowerCase()) {
         titleArr.push(row[1]); // title
       }

@@ -1,6 +1,6 @@
 export type SleeveType = "No" | "Standard" | "Premium" | "Ryker";
 
-export type TableStructure = [
+export type TableRow = [
   string, // year
   string, // title
   SleeveType, // sleeveType

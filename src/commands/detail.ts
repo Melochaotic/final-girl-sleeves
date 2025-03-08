@@ -2,7 +2,7 @@ import { readFile } from "fs";
 import { resolve } from "path";
 import { argv, exit } from "process";
 import { styleText } from "util";
-import type { TableStructure } from "../types/TableStructure";
+import type { TableRow } from "../types/TableStructure";
 import { formatSleeveType } from "../utils/formatting.mts";
 
 export default function detail() {
@@ -29,7 +29,7 @@ export default function detail() {
       countEuro,
       count70x121,
       count65x130,
-    ] of rows as TableStructure[]) {
+    ] of rows as TableRow[]) {
       if (title.toLowerCase() === searchTitle.toLowerCase()) {
         const formattedSleeveType = formatSleeveType(sleeveType);
         console.log(

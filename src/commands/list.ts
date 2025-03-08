@@ -1,7 +1,7 @@
 import { readFile } from "fs";
 import { resolve } from "path";
 import { styleText } from "util";
-import type { TableStructure } from "../types/TableStructure";
+import type { TableRow } from "../types/TableStructure";
 
 export default function list() {
   const fileName = resolve("data/FinalGirlSleeves.csv");
@@ -17,7 +17,7 @@ export default function list() {
     if (!colTitles) throw new Error("No column titles found");
 
     const titleArr: string[] = [];
-    for (const row of rows as TableStructure[]) {
+    for (const row of rows as TableRow[]) {
       titleArr.push(row[1]); // title
     }
 
