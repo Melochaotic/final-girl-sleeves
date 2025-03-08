@@ -3,6 +3,7 @@ import { resolve } from "path";
 import { argv } from "process";
 import { styleText } from "util";
 import type { SleeveType, TableStructure } from "../types/TableStructure";
+import { formatSleeveType } from "../utils/formatting.mts";
 
 export default function listByType() {
   const sleeveType = argv[3] as SleeveType;
@@ -26,19 +27,8 @@ export default function listByType() {
       }
     }
 
-    const sleeveTypeColor =
-      sleeveType === "No" // Always wear protection
-        ? "red"
-        : sleeveType === "Ryker" // Aim to sleeve all w/ Ryker
-          ? "green"
-          : "yellow"; // Better than nothing
-
-    const sleeveTypeText = styleText(
-      [sleeveTypeColor, "bold"],
-      sleeveType.toUpperCase(),
-    );
-
-    console.log(`${titleArr.length} games with ${sleeveTypeText} Sleeves`);
+    const formattedSleeveType = formatSleeveType(sleeveType);
+    console.log(`${titleArr.length} games with ${formattedSleeveType} Sleeves`);
     console.log(`-----------------------------`);
     titleArr
       .sort()
