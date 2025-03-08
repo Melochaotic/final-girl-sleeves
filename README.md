@@ -50,7 +50,9 @@ This project forces PNPM by following [this helpful guide](https://www.freecodec
 - [ ] !!!TESTING!!!
 - [ ] Count and/or percentage of sleeve type - aiming for 100% ryker
 - [x] Total sleeves required to sleeve all
-- [ ] Total sleeves required to finish sleeving specified type
+- [x] Total sleeves required to finish sleeving specified type
+- [ ] ??? Refactor to number count object instead of seperate vars
+- [ ] Show total cards in `sleeve` command when filtered
 - [ ] Update sleeve type?!?!?!
 - [ ] Improve `help` command: each command file should export help text to display here
 - [ ] ...MOAR!

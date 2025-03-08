@@ -1,7 +1,12 @@
+import { argv } from "process";
 import { styleText } from "util";
+import type { SleeveType } from "../types/TableStructure";
 import { parseCsv } from "../utils/csv.mts";
+import { formatSleeveType } from "../utils/formatting.mts";
 
 export default function sleeve() {
+  const sleeveType = argv[3] ?? ("" as SleeveType);
+  const formattedSleeveType = formatSleeveType(sleeveType);
   let totalCountStandard = 0;
   let totalCountEuro = 0;
   let totalCount70x121 = 0;
@@ -10,6 +15,8 @@ export default function sleeve() {
   const { rows } = parseCsv();
 
   for (const row of rows) {
+    // remove count for target sleeveType
+    if (sleeveType === row[2]) continue;
     totalCountStandard += Number(row[3]);
     totalCountEuro += Number(row[4]);
     totalCount70x121 += Number(row[5]);
@@ -20,7 +27,7 @@ export default function sleeve() {
     totalCountStandard + totalCountEuro + totalCount70x121 + totalCount65x130;
 
   console.log(
-    `Total cards to sleeve:\n\n` +
+    `Total cards to fully ${formattedSleeveType} sleeve:\n\n` +
       `Type     | Count\n` +
       `---------|-------\n` +
       `${styleText(["yellow"], "Standard")} | ${Number(totalCountStandard) || "-"}\n` +
