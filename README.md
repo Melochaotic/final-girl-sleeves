@@ -47,6 +47,7 @@ This project forces PNPM by following [this helpful guide](https://www.freecodec
 - [x] Help command - List all commands (make this default when no args)
 - [x] List titles of a type e.g. unsleeved
 - [x] Refactor opening & processing file to reusable component
+- [ ] !!!TESTING!!!
 - [ ] Count and/or percentage of sleeve type - aiming for 100% ryker
 - [x] Total sleeves required to sleeve all
 - [ ] Total sleeves required to finish sleeving specified type
