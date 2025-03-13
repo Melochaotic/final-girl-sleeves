@@ -4,7 +4,7 @@ import type { SleeveType, TableRow } from "../types/TableStructure";
 import { parseCsv } from "../utils/csv.mts";
 import { formatSleeveType } from "../utils/formatting.mts";
 
-export default function listByType() {
+export default function () {
   const sleeveType = argv[3] as SleeveType;
   if (!sleeveType) throw new Error("NO SLEEVE TYPE GIVEN");
 

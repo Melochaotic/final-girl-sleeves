@@ -4,7 +4,7 @@ import type { TableRow } from "../types/TableStructure";
 import { parseCsv } from "../utils/csv.mts";
 import { formatSleeveType } from "../utils/formatting.mts";
 
-export default function detail() {
+export default function () {
   const searchTitle = argv[3];
   if (!searchTitle) throw new Error("NO SEARCH TERM GIVEN");
 

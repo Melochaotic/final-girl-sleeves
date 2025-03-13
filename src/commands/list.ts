@@ -2,7 +2,7 @@ import { styleText } from "util";
 import type { TableRow } from "../types/TableStructure";
 import { parseCsv } from "../utils/csv.mts";
 
-export default function list() {
+export default function () {
   const { rows } = parseCsv();
 
   const titleArr: string[] = [];

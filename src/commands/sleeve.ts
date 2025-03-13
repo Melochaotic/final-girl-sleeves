@@ -4,7 +4,7 @@ import type { SleeveType } from "../types/TableStructure";
 import { parseCsv } from "../utils/csv.mts";
 import { formatSleeveType } from "../utils/formatting.mts";
 
-export default function sleeve() {
+export default function () {
   const sleeveType = argv[3] ?? ("" as SleeveType);
   const formattedSleeveType = formatSleeveType(sleeveType);
   let totalCountStandard = 0;

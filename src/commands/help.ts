@@ -3,7 +3,7 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { styleText } from "util";
 
-export default function help() {
+export default function () {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);
 
