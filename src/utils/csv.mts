@@ -1,6 +1,8 @@
-import { readFileSync } from "fs";
+import { readFileSync, writeFileSync } from "fs";
 import { resolve } from "path";
 import { TableRow } from "../types/TableStructure";
+
+const fileName = resolve("data/FinalGirlSleeves.csv");
 
 type ParsedCsv = {
   colTitles: string[];
@@ -8,8 +10,6 @@ type ParsedCsv = {
 };
 
 export function parseCsv(): ParsedCsv {
-  const fileName = resolve("data/FinalGirlSleeves.csv");
-
   const data = readFileSync(fileName, "utf8");
 
   const rows = data
@@ -24,4 +24,10 @@ export function parseCsv(): ParsedCsv {
     // @ts-expect-error CSV should follow type 🤞
     rows,
   };
+}
+
+export function saveAsCsv({ colTitles, rows }: ParsedCsv) {
+  const titledRows = [colTitles, ...rows];
+  const csv = titledRows.map((row) => row.join(", ")).join("\n");
+  writeFileSync(fileName, csv, "utf8");
 }
