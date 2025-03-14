@@ -55,4 +55,8 @@ This project forces PNPM by following [this helpful guide](https://www.freecodec
 - [ ] Show total cards in `sleeve` command when filtered
 - [ ] Update sleeve type?!?!?!
 - [ ] Improve `help` command: each command file should export help text to display here
+- [ ] Hardcode list of titles for types & input error handing ( like `SleeveType`)
+- [ ] Rename `colTitles` -> `colHeaders`
+- [ ] create function to fetch named column from data row
+- [ ] Use emojis to indicate command status
 - [ ] ...MOAR!
