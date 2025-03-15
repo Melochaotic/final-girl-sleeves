@@ -52,7 +52,7 @@ This project forces PNPM by following [this helpful guide](https://www.freecodec
 - [x] Total sleeves required to sleeve all
 - [x] Total sleeves required to finish sleeving specified type
 - [ ] ??? Refactor to number count object instead of seperate vars
-- [ ] Show total cards in `sleeve` command when filtered
+- [x] Show total cards in `sleeve` command when filtered
 - [x] Update sleeve type?!?!?!
 - [x] Maintain whitespace when updating sleeves
 - [ ] Improve `help` command: each command file should export help text to display here
