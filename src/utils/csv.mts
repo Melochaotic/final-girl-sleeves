@@ -5,7 +5,7 @@ import { TableRow } from "../types/TableStructure";
 const fileName = resolve("data/FinalGirlSleeves.csv");
 
 type ParsedCsv = {
-  colTitles: string[];
+  colHeaders: string[];
   rows: TableRow[];
 };
 
@@ -16,19 +16,19 @@ export function parseCsv(): ParsedCsv {
     .split("\n")
     .map((row) => row.split(",").map((cell) => cell.trim()));
 
-  const colTitles = rows.shift();
-  if (!colTitles) throw new Error("No column titles found");
+  const colHeaders = rows.shift();
+  if (!colHeaders) throw new Error("No column headers found");
   if (!rows.length) throw new Error("No data found");
 
   return {
-    colTitles,
+    colHeaders,
     // @ts-expect-error CSV should follow type 🤞
     rows,
   };
 }
 
-export function saveAsCsv({ colTitles, rows }: ParsedCsv) {
-  const titledRows = padColumns([colTitles, ...rows]);
+export function saveAsCsv({ colHeaders, rows }: ParsedCsv) {
+  const titledRows = padColumns([colHeaders, ...rows]);
   const csv = titledRows.map((row) => row.join(", ")).join("\n");
   writeFileSync(fileName, csv, "utf8");
 }

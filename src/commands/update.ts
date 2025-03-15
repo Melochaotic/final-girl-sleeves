@@ -13,7 +13,7 @@ export default function () {
   const sleeveType: SleeveType = confirmedSleeveType(argv[4]);
   if (!title) throw new Error("NO TITLE GIVEN");
 
-  const { colTitles, rows } = parseCsv();
+  const { colHeaders, rows } = parseCsv();
 
   rows.map((row) => {
     if (row[1] === title && row[2] !== sleeveType) {
@@ -24,7 +24,7 @@ export default function () {
   });
 
   if (hasChanged) {
-    saveAsCsv({ colTitles, rows });
+    saveAsCsv({ colHeaders, rows });
     console.log(
       styleText(["green"], "UPDATED:"),
       `"${title}" now has ${formatSleeveType(sleeveType)} sleeves`,
