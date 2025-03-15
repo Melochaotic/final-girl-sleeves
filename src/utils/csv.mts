@@ -18,6 +18,7 @@ export function parseCsv(): ParsedCsv {
 
   const colTitles = rows.shift();
   if (!colTitles) throw new Error("No column titles found");
+  if (!rows.length) throw new Error("No data found");
 
   return {
     colTitles,
