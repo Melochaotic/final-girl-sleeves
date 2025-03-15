@@ -28,7 +28,30 @@ export function parseCsv(): ParsedCsv {
 }
 
 export function saveAsCsv({ colTitles, rows }: ParsedCsv) {
-  const titledRows = [colTitles, ...rows];
+  const titledRows = padColumns([colTitles, ...rows]);
   const csv = titledRows.map((row) => row.join(", ")).join("\n");
   writeFileSync(fileName, csv, "utf8");
+}
+
+/**
+ * formats CSV with whitespace so it looks pretty
+ */
+function padColumns(data: (string[] | TableRow)[]): (string[] | TableRow)[] {
+  const colPadding: number[] = [];
+
+  // Figure out max cell width per column
+  data.forEach((rows) => {
+    rows.forEach((cell, colIndex) => {
+      colPadding[colIndex] ??= 0;
+      const cellLength = Number(cell?.length);
+      if (cellLength > colPadding[colIndex]) {
+        colPadding[colIndex] = cellLength;
+      }
+    });
+  });
+
+  // Pad cells with whitespace for column
+  return data.map((rows) =>
+    rows.map((cell, colIndex) => String(cell).padEnd(colPadding[colIndex])),
+  );
 }

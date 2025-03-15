@@ -54,7 +54,7 @@ This project forces PNPM by following [this helpful guide](https://www.freecodec
 - [ ] ??? Refactor to number count object instead of seperate vars
 - [ ] Show total cards in `sleeve` command when filtered
 - [x] Update sleeve type?!?!?!
-- [ ] Maintain whitespace when updating sleeves
+- [x] Maintain whitespace when updating sleeves
 - [ ] Improve `help` command: each command file should export help text to display here
 - [ ] Hardcode list of titles for types & input error handing ( like `SleeveType`)
 - [ ] Rename `colTitles` -> `colHeaders`
