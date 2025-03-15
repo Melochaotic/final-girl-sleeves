@@ -8,12 +8,12 @@ export function titleCase(str: string): string {
 }
 
 export function formatSleeveType(sleeveType: string): string {
-  sleeveType = titleCase(sleeveType);
+  const compSleeveType = titleCase(sleeveType.trim());
 
   const sleeveTypeColor =
-    sleeveType === "No" // Always wear protection
+    compSleeveType === "No" // Always wear protection
       ? "red"
-      : sleeveType === "Ryker" // Aim to sleeve all w/ Ryker
+      : compSleeveType === "Ryker" // Aim to sleeve all w/ Ryker
         ? "green"
         : "yellow"; // Better than nothing
 
