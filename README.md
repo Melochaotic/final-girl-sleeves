@@ -47,17 +47,17 @@ This project forces PNPM by following [this helpful guide](https://www.freecodec
 - [x] Help command - List all commands (make this default when no args)
 - [x] List titles of a type e.g. unsleeved
 - [x] Refactor opening & processing file to reusable component
-- [ ] !!!TESTING!!!
-- [ ] Count and/or percentage of sleeve type - aiming for 100% ryker
 - [x] Total sleeves required to sleeve all
 - [x] Total sleeves required to finish sleeving specified type
-- [ ] ??? Refactor to number count object instead of seperate vars
 - [x] Show total cards in `sleeve` command when filtered
 - [x] Update sleeve type?!?!?!
 - [x] Maintain whitespace when updating sleeves
+- [x] Rename `colTitles` -> `colHeaders`
+- [ ] Count and/or percentage of sleeve type - aiming for 100% ryker
 - [ ] Improve `help` command: each command file should export help text to display here
 - [ ] Hardcode list of titles for types & input error handing ( like `SleeveType`)
-- [x] Rename `colTitles` -> `colHeaders`
 - [ ] create function to fetch named column from data row
 - [ ] Use emojis to indicate command status
+- [ ] ??? Refactor to number count object instead of seperate vars
+- [ ] !!!TESTING!!!
 - [ ] ...MOAR!
