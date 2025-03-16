@@ -33,27 +33,27 @@ export default function () {
     const count = countByType[sleeveType as SleeveType];
     outputByType +=
       `${formatSleeveType(sleeveType.padEnd(9))}` +
-      ` | ${String(count).padStart(5)}` +
-      ` | ${formatPercentage(count, total)}\n`;
+      ` | ${formatPercentage(count, total)}` +
+      ` | ${String(count).padStart(5)}\n`;
   }
 
   // calculate sleeved & unsleeved
   const sleevedCount = total - countByType["No"];
   outputBySleeved +=
     `${styleText(["green", "bold"], "SLEEVED".padEnd(9))}` +
-    ` | ${String(sleevedCount).padStart(5)}` +
-    ` | ${formatPercentage(sleevedCount, total)}\n` +
+    ` | ${formatPercentage(sleevedCount, total)}` +
+    ` | ${String(sleevedCount).padStart(5)}\n` +
     `${styleText(["red", "bold"], "UNSLEEVED".padEnd(9))}` +
-    ` | ${String(countByType["No"]).padStart(5)}` +
-    ` | ${formatPercentage(countByType["No"], total)}\n`;
+    ` | ${formatPercentage(countByType["No"], total)}` +
+    ` | ${String(countByType["No"]).padStart(5)}\n`;
 
   console.log(
-    `Type      | Count | Percent\n` +
-      `----------|-------|---------\n` +
-      outputByType +
-      `----------|-------|---------\n` +
+    `Type      | Percent | Count\n` +
+      `----------|---------|-------\n` +
       outputBySleeved +
-      `----------|-------|---------\n` +
-      `${styleText(["green"], "Total")}     | ${String(total).padStart(5)} |         \n`,
+      `----------|---------|-------\n` +
+      outputByType +
+      `----------|---------|-------\n` +
+      `${styleText(["green"], "Total")}     |         | ${String(total).padStart(5)}\n`,
   );
 }
