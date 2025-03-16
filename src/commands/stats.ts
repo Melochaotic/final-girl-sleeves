@@ -10,7 +10,8 @@ type CountByType = {
 };
 
 export default function () {
-  let output = "";
+  let outputByType = "";
+  let outputBySleeved = "";
   let total = 0;
   const { rows } = parseCsv();
   const countByType: CountByType = {
@@ -30,17 +31,29 @@ export default function () {
   // calculate percentage of each type
   for (const sleeveType in countByType) {
     const count = countByType[sleeveType as SleeveType];
-    output +=
-      `${formatSleeveType(sleeveType.padEnd(8))}` +
+    outputByType +=
+      `${formatSleeveType(sleeveType.padEnd(9))}` +
       ` | ${String(count).padStart(5)}` +
       ` | ${formatPercentage(count, total)}\n`;
   }
 
+  // calculate sleeved & unsleeved
+  const sleevedCount = total - countByType["No"];
+  outputBySleeved +=
+    `${styleText(["green", "bold"], "SLEEVED".padEnd(9))}` +
+    ` | ${String(sleevedCount).padStart(5)}` +
+    ` | ${formatPercentage(sleevedCount, total)}\n` +
+    `${styleText(["red", "bold"], "UNSLEEVED".padEnd(9))}` +
+    ` | ${String(countByType["No"]).padStart(5)}` +
+    ` | ${formatPercentage(countByType["No"], total)}\n`;
+
   console.log(
-    `Type     | Count | Percent\n` +
-      `---------|-------|---------\n` +
-      output +
-      `---------|-------|---------\n` +
-      `${styleText(["green"], "Total")}    | ${String(total).padStart(5)} |         \n`,
+    `Type      | Count | Percent\n` +
+      `----------|-------|---------\n` +
+      outputByType +
+      `----------|-------|---------\n` +
+      outputBySleeved +
+      `----------|-------|---------\n` +
+      `${styleText(["green"], "Total")}     | ${String(total).padStart(5)} |         \n`,
   );
 }
