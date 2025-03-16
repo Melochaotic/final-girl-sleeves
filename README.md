@@ -54,7 +54,7 @@ This project forces PNPM by following [this helpful guide](https://www.freecodec
 - [x] Maintain whitespace when updating sleeves
 - [x] Rename `colTitles` -> `colHeaders`
 - [x] Count and/or percentage of sleeve type - aiming for 100% ryker
-- [ ] Improve `help` command: each command file should export help text to display here
+- [x] Improve `help` command: each command file should export help text to display here
 - [ ] Hardcode list of titles for types & input error handing ( like `SleeveType`)
 - [ ] create function to fetch named column from data row
 - [ ] Use emojis to indicate command status

@@ -7,6 +7,9 @@ import {
 import { parseCsv, saveAsCsv } from "../utils/csv.mts";
 import { formatSleeveType, titleCase } from "../utils/formatting.mts";
 
+export const args = "<title> <sleeveType>";
+export const description = "Update `sleeveType` for given `title`";
+
 export default function () {
   let hasChanged = false;
   const title: string = titleCase(argv[3]);

@@ -3,6 +3,8 @@ import { SleeveType } from "../types/TableStructure";
 import { parseCsv } from "../utils/csv.mts";
 import { formatSleeveType } from "../utils/formatting.mts";
 
+export const description = "Show current statistics of sleeving";
+
 type CountByType = {
   [key in SleeveType]: number;
 };

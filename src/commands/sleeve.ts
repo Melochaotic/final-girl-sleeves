@@ -4,6 +4,10 @@ import type { SleeveType } from "../types/TableStructure";
 import { parseCsv } from "../utils/csv.mts";
 import { formatSleeveType } from "../utils/formatting.mts";
 
+export const args = "[<sleeveType>]";
+export const description =
+  "Show sleeve count totals; optionally filtered by `sleeveType`";
+
 export default function () {
   const sleeveType = argv[3] ?? ("" as SleeveType);
   const formattedSleeveType = formatSleeveType(sleeveType);
