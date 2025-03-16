@@ -12,9 +12,13 @@ export default function () {
 
   readdir(__dirname, (err, files) => {
     if (err) throw err;
-    files.forEach((file) =>
+
+    files.forEach((file) => {
       // TODO: each command file should export help text
-      console.log("* " + styleText(["yellow"], file.split(".", 1)[0])),
-    );
+      // Only show files
+      if (file.indexOf(".") > 0) {
+        console.log("* " + styleText(["yellow"], file.split(".", 1)[0]));
+      }
+    });
   });
 }
