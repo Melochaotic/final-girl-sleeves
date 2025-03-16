@@ -1,7 +1,10 @@
+import { titleCase } from "../utils/formatting.mts";
+
 const sleeveTypeArr = ["No", "Standard", "Premium", "Ryker"] as const;
 
 export type SleeveType = (typeof sleeveTypeArr)[number];
 export const confirmedSleeveType = (value: string): SleeveType => {
+  value = titleCase(value);
   if (sleeveTypeArr.includes(value as SleeveType)) {
     return value as SleeveType;
   } else {

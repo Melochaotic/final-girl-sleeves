@@ -5,18 +5,18 @@ import {
   type SleeveType,
 } from "../types/TableStructure.ts";
 import { parseCsv, saveAsCsv } from "../utils/csv.mts";
-import { formatSleeveType } from "../utils/formatting.mts";
+import { formatSleeveType, titleCase } from "../utils/formatting.mts";
 
 export default function () {
   let hasChanged = false;
-  const title: string = argv[3];
+  const title: string = titleCase(argv[3]);
   const sleeveType: SleeveType = confirmedSleeveType(argv[4]);
   if (!title) throw new Error("NO TITLE GIVEN");
 
   const { colHeaders, rows } = parseCsv();
 
   rows.map((row) => {
-    if (row[1] === title && row[2] !== sleeveType) {
+    if (row[1] === titleCase(title) && row[2] !== titleCase(sleeveType)) {
       hasChanged = true;
       row[2] = sleeveType;
     }
