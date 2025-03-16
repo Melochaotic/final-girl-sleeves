@@ -19,3 +19,11 @@ export function formatSleeveType(sleeveType: string): string {
 
   return styleText([sleeveTypeColor, "bold"], sleeveType.toUpperCase());
 }
+
+export function formatPercentage(count: number, total: number): string {
+  const percent = Math.round((count / total) * 100);
+  const percentColor =
+    percent === 100 ? "green" : percent >= 50 ? "yellow" : "red";
+
+  return styleText([percentColor, "bold"], String(percent + "%").padStart(7));
+}
