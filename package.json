@@ -5,8 +5,8 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "dev": "pnpm tsc && node dist/index.js",
-    "fgs": "pnpm tsc && node dist/index.js",
+    "fgs": "rm -rf dist && pnpm tsc && node dist/index.js",
+    "dev": "rm -rf dist && pnpm tsc && node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
