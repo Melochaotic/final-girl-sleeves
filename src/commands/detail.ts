@@ -17,8 +17,8 @@ export default function () {
     year,
     title,
     sleeveType,
-    countStandard,
     countEuro,
+    countStandard,
     count70x121,
     count65x130,
   ] of rows as TableRow[]) {
