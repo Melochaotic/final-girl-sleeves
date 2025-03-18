@@ -19,7 +19,10 @@ export default function () {
   const { colHeaders, rows } = parseCsv();
 
   rows.map((row) => {
-    if (row[1] === titleCase(title) && row[2] !== titleCase(sleeveType)) {
+    if (
+      row[1].toLowerCase() === title.toLowerCase() &&
+      row[2].toLowerCase() !== sleeveType.toLowerCase()
+    ) {
       hasChanged = true;
       row[2] = sleeveType;
     }
