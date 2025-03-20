@@ -1,5 +1,5 @@
 import { styleText } from "util";
-import { SleeveType } from "../types/TableStructure";
+import type { SleeveType } from "../types/TableStructure";
 import { parseCsv } from "../utils/csv.mts";
 import { formatPercentage, formatSleeveType } from "../utils/formatting.mts";
 

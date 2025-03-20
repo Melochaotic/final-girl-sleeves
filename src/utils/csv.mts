@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync } from "fs";
 import { resolve } from "path";
-import { TableRow } from "../types/TableStructure";
+import type { TableRow } from "../types/TableStructure";
 
 const fileName = resolve("data/FinalGirlSleeves.csv");
 
