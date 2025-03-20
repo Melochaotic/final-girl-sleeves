@@ -9,6 +9,9 @@
     "dev": "rm -rf dist && pnpm tsc && node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "fgs": "./src/index.ts"
+  },
   "engines": {
     "npm": "please-use-PNPM",
     "pnpm": ">= 10.6.5"
@@ -16,9 +19,6 @@
   "author": "Melochaotic (https://github.com/Melochaotic)",
   "license": "ISC",
   "devDependencies": {
-    "@eslint/js": "^9.21.0",
-    "@types/node": "^22.13.5",
-    "eslint": "^9.21.0",
     "@eslint/js": "^9.22.0",
     "@types/node": "^22.13.10",
     "eslint": "^9.22.0",

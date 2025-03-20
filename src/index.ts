@@ -1,3 +1,5 @@
+#! /usr/bin/env node --disable-warning=ExperimentalWarning
+
 (async () => {
   const commandArg = process.argv[2] ?? "help";
 
