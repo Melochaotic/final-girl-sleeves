@@ -1,8 +1,10 @@
+import { argv } from "process";
 import { styleText } from "util";
 import type { SleeveType } from "../types/TableStructure";
 import { parseCsv } from "../utils/csv.mts";
 import { formatPercentage, formatSleeveType } from "../utils/formatting.mts";
 
+export const args = "[--card | --box]";
 export const description = "Show current statistics of sleeving";
 
 type CountByType = {
@@ -10,6 +12,12 @@ type CountByType = {
 };
 
 export default function () {
+  const statType = argv[3];
+  const acceptedStatTypes = ["--card", "--box"];
+  if (statType && acceptedStatTypes.indexOf(statType) < 0) {
+    throw Error("UNKNOWN OPTION");
+  }
+
   let outputByType = "";
   let outputBySleeved = "";
   let total = 0;
@@ -24,8 +32,13 @@ export default function () {
   // Count titles per sleeve type
   rows.forEach((row) => {
     const sleeveType: SleeveType = row[2];
-    countByType[sleeveType]++;
-    total++;
+    const totalCards =
+      statType === "--box"
+        ? 1
+        : Number(row[3]) + Number(row[4]) + Number(row[5]) + Number(row[6]);
+
+    countByType[sleeveType] += totalCards;
+    total += totalCards;
   });
 
   // calculate percentage of each type
