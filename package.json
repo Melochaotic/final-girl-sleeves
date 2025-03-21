@@ -5,7 +5,6 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "fgs": "rm -rf dist && pnpm tsc && node dist/index.js",
     "dev": "rm -rf dist && pnpm tsc && node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
