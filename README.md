@@ -97,11 +97,10 @@ This project forces PNPM by following [this helpful guide](https://www.freecodec
 - [x] Rename `colTitles` -> `colHeaders`
 - [x] Count and/or percentage of sleeve type - aiming for 100% ryker
 - [x] Improve `help` command: each command file should export help text to display here
-- [ ] Refactor with [parseArgs](https://nodejs.org/api/util.html#utilparseargsconfig)
-- [ ] CONFETTI when 100% sleeved & 100% Ryker
 - [X] Hardcode list of titles for types & input error handing ( like `SleeveType`)
+- [ ] Refactor with [commander](https://github.com/tj/commander.js?tab=readme-ov-file#commanderjs)
+- [ ] CONFETTI when 100% sleeved & 100% Ryker
 - [ ] create function to fetch named column from data row
-- [ ] Use emojis to indicate command status
 - [ ] ??? Refactor to number count object instead of seperate vars
 - [ ] !!!TESTING!!!
 - [ ] ...MOAR!
