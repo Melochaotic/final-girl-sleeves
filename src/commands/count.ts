@@ -19,10 +19,10 @@ export default async function () {
   for (const row of rows) {
     // remove count for target sleeveType
     if (sleeveType === row[2]) continue;
-    totalCountStandard += Number(row[3]);
-    totalCountEuro += Number(row[4]);
-    totalCount70x121 += Number(row[5]);
-    totalCount65x130 += Number(row[6]);
+    totalCountStandard += row[3];
+    totalCountEuro += row[4];
+    totalCount70x121 += row[5];
+    totalCount65x130 += row[6];
   }
 
   const totalCount =
@@ -32,10 +32,10 @@ export default async function () {
     `Total cards to fully ${formattedSleeveType} sleeve:\n\n` +
       `Type     | Count\n` +
       `---------|-------\n` +
-      `${styleText(["yellow"], "Standard")} | ${Number(totalCountStandard) || "-"}\n` +
-      `${styleText(["yellow"], "Euro")}     | ${Number(totalCountEuro) || "-"}\n` +
-      `${styleText(["yellow"], "70*121")}   | ${Number(totalCount70x121) || "-"}\n` +
-      `${styleText(["yellow"], "65*130")}   | ${Number(totalCount65x130) || "-"}\n` +
+      `${styleText(["yellow"], "Standard")} | ${totalCountStandard || "-"}\n` +
+      `${styleText(["yellow"], "Euro")}     | ${totalCountEuro || "-"}\n` +
+      `${styleText(["yellow"], "70*121")}   | ${totalCount70x121 || "-"}\n` +
+      `${styleText(["yellow"], "65*130")}   | ${totalCount65x130 || "-"}\n` +
       `---------|-------\n` +
       `${styleText(["green"], "Total")}    | ${totalCount || "-"}`,
   );

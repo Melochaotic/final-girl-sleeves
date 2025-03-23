@@ -1,11 +1,11 @@
 export type TableRow = [
-  string, // year
+  number, // year
   GameTitle, // title
   SleeveType, // sleeveType
-  string, // countStandard
-  string, // countEuro
-  string, // count70x121
-  string, // count65x130
+  number, // countStandard
+  number, // countEuro
+  number, // count70x121
+  number, // count65x130
 ];
 
 export const sleeveTypeArr = ["No", "Standard", "Premium", "Ryker"] as const;

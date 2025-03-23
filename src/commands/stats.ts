@@ -33,9 +33,7 @@ export default function () {
   rows.forEach((row) => {
     const sleeveType: SleeveType = row[2];
     const totalCards =
-      statType === "--box"
-        ? 1
-        : Number(row[3]) + Number(row[4]) + Number(row[5]) + Number(row[6]);
+      statType === "--box" ? 1 : row[3] + row[4] + row[5] + row[6];
 
     countByType[sleeveType] += totalCards;
     total += totalCards;

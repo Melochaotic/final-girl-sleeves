@@ -27,10 +27,10 @@ export default async function () {
         `The "${title}" box was released in ${year}.\nIt currently has ${formattedSleeveType} sleeves.\n\n` +
           `Type     | Count\n` +
           `---------|-------\n` +
-          `${styleText(["yellow"], "Standard")} | ${Number(countStandard) || "-"}\n` +
-          `${styleText(["yellow"], "Euro")}     | ${Number(countEuro) || "-"}\n` +
-          `${styleText(["yellow"], "70*121")}   | ${Number(count70x121) || "-"}\n` +
-          `${styleText(["yellow"], "65*130")}   | ${Number(count65x130) || "-"}`,
+          `${styleText(["yellow"], "Standard")} | ${countStandard || "-"}\n` +
+          `${styleText(["yellow"], "Euro")}     | ${countEuro || "-"}\n` +
+          `${styleText(["yellow"], "70*121")}   | ${count70x121 || "-"}\n` +
+          `${styleText(["yellow"], "65*130")}   | ${count65x130 || "-"}`,
       );
       exit();
     }

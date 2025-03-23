@@ -1,6 +1,13 @@
 import { readFileSync, writeFileSync } from "fs";
 import { resolve } from "path";
-import type { TableRow } from "../types/TableStructure";
+import { exit } from "process";
+import {
+  type GameTitle,
+  gameTitleArr,
+  type SleeveType,
+  sleeveTypeArr,
+  type TableRow,
+} from "../types/TableStructure.ts";
 
 const fileName = resolve("data/FinalGirlSleeves.csv");
 
@@ -22,9 +29,47 @@ export function parseCsv(): ParsedCsv {
 
   return {
     colHeaders,
-    // @ts-expect-error CSV should follow type 🤞
-    rows,
+    rows: validateRows(rows),
   };
+}
+
+function validateRows(rows: string[][]): TableRow[] {
+  const errors: string[] = [];
+  const validatedRows: TableRow[] = rows.map(
+    ([
+      year,
+      title,
+      sleeveType,
+      countEuro,
+      countStandard,
+      count70x121,
+      count65x130,
+    ]) => {
+      if (!gameTitleArr.includes(title as GameTitle)) {
+        errors.push(`"${title}" is not a valid title`);
+      }
+      if (!sleeveTypeArr.includes(sleeveType as SleeveType)) {
+        errors.push(`"${sleeveType}" is not a valid sleeve type`);
+      }
+
+      return [
+        Number(year),
+        title as GameTitle,
+        sleeveType as SleeveType,
+        Number(countEuro),
+        Number(countStandard),
+        Number(count70x121),
+        Number(count65x130),
+      ];
+    },
+  );
+
+  if (errors.length) {
+    errors.forEach((error) => console.error(`⛔ ${error} in CSV - please fix`));
+    exit(2);
+  }
+
+  return validatedRows;
 }
 
 export function saveAsCsv({ colHeaders, rows }: ParsedCsv) {
@@ -43,7 +88,7 @@ function padColumns(data: (string[] | TableRow)[]): (string[] | TableRow)[] {
   data.forEach((rows) => {
     rows.forEach((cell, colIndex) => {
       colPadding[colIndex] ??= 0;
-      const cellLength = Number(cell?.length);
+      const cellLength = String(cell).length;
       if (cellLength > colPadding[colIndex]) {
         colPadding[colIndex] = cellLength;
       }
