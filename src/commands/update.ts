@@ -1,6 +1,6 @@
 import { argv } from "process";
 import { styleText } from "util";
-import { type SleeveType } from "../types/TableStructure";
+import { type SleeveType } from "../types/TableStructure.ts";
 import { parseCsv, saveAsCsv } from "../utils/csv.mts";
 import { formatSleeveType, titleCase } from "../utils/formatting.mts";
 import { promtSleeveType } from "../utils/promts.mts";
