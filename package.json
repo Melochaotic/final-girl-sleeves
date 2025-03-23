@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@inquirer/search": "^3.0.11",
-    "@inquirer/select": "^4.1.0"
+    "@inquirer/select": "^4.1.0",
+    "commander": "^13.1.0"
   }
 }
