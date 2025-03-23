@@ -33,16 +33,29 @@ function getGameTitleOptions() {
     };
   });
 }
+
 export async function promtGameTitle(): Promise<GameTitle> {
+  const ignoreTitlePrefixArr = ["the", "a"];
+
   return search<GameTitle>({
     message: "Select a game title",
     source: async (input) => {
       const options = getGameTitleOptions();
       if (!input) return options;
 
-      return options.filter(({ value }) =>
-        value.toLowerCase().startsWith(input.toLowerCase()),
-      );
+      return options.filter(({ value }) => {
+        const compInput = input.toLowerCase();
+        let compValue = value.toLowerCase();
+
+        for (const prefix of ignoreTitlePrefixArr) {
+          if (compInput.startsWith(prefix)) break;
+          if (compValue.startsWith(prefix)) {
+            compValue = compValue.slice(prefix.length).trimStart();
+          }
+        }
+
+        return compValue.startsWith(compInput);
+      });
     },
   });
 }
