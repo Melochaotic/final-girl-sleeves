@@ -1,15 +1,13 @@
-import { argv } from "process";
 import { styleText } from "util";
-import type { SleeveType } from "../types/TableStructure";
 import { parseCsv } from "../utils/csv.mts";
 import { formatSleeveType } from "../utils/formatting.mts";
+import { promtSleeveType } from "../utils/promts.mts";
 
-export const args = "[<sleeveType>]";
 export const description =
   "Show sleeve count totals; optionally filtered by `sleeveType`";
 
-export default function () {
-  const sleeveType = argv[3] ?? ("" as SleeveType);
+export default async function () {
+  const sleeveType = await promtSleeveType(["All"] as const);
   const formattedSleeveType = formatSleeveType(sleeveType);
   let totalCountStandard = 0;
   let totalCountEuro = 0;
