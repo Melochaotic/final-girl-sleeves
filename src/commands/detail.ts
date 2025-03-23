@@ -1,15 +1,14 @@
-import { argv, exit } from "process";
+import { exit } from "process";
 import { styleText } from "util";
 import type { TableRow } from "../types/TableStructure";
 import { parseCsv } from "../utils/csv.mts";
 import { formatSleeveType } from "../utils/formatting.mts";
+import { promtGameTitle } from "../utils/promts.mts";
 
-export const args = "<title>";
 export const description = "Show details for given title";
 
-export default function () {
-  const searchTitle = argv[3];
-  if (!searchTitle) throw new Error("NO SEARCH TERM GIVEN");
+export default async function () {
+  const searchTitle = await promtGameTitle();
 
   const { rows } = parseCsv();
 

@@ -99,7 +99,7 @@ This project forces PNPM by following [this helpful guide](https://www.freecodec
 - [x] Improve `help` command: each command file should export help text to display here
 - [ ] Refactor with [parseArgs](https://nodejs.org/api/util.html#utilparseargsconfig)
 - [ ] CONFETTI when 100% sleeved & 100% Ryker
-- [ ] Hardcode list of titles for types & input error handing ( like `SleeveType`)
+- [X] Hardcode list of titles for types & input error handing ( like `SleeveType`)
 - [ ] create function to fetch named column from data row
 - [ ] Use emojis to indicate command status
 - [ ] ??? Refactor to number count object instead of seperate vars

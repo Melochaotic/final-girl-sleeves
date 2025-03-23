@@ -1,18 +1,15 @@
-import { argv } from "process";
 import { styleText } from "util";
 import { type SleeveType } from "../types/TableStructure.ts";
 import { parseCsv, saveAsCsv } from "../utils/csv.mts";
-import { formatSleeveType, titleCase } from "../utils/formatting.mts";
-import { promtSleeveType } from "../utils/promts.mts";
+import { formatSleeveType } from "../utils/formatting.mts";
+import { promtGameTitle, promtSleeveType } from "../utils/promts.mts";
 
-export const args = "<title>";
 export const description = "Update `sleeveType` for given `title`";
 
 export default async function () {
   let hasChanged = false;
-  const title: string = titleCase(argv[3]);
+  const title = await promtGameTitle();
   const sleeveType: SleeveType = await promtSleeveType([]);
-  if (!title) throw new Error("NO TITLE GIVEN");
 
   const { colHeaders, rows } = parseCsv();
 
