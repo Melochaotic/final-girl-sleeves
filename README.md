@@ -81,26 +81,3 @@ This is why I have specifically aimed to get this running **without** third part
 ## Force PNPM because NPM is :poop:
 
 This project forces PNPM by following [this helpful guide](https://www.freecodecamp.org/news/how-to-force-use-yarn-or-npm/)
-
-## Features list
-
-- [x] Display game details & sleeve requirements by title
-- [X] List all titles
-- [x] Help command - List all commands (make this default when no args)
-- [x] List titles of a type e.g. unsleeved
-- [x] Refactor opening & processing file to reusable component
-- [x] Total sleeves required to sleeve all
-- [x] Total sleeves required to finish sleeving specified type
-- [x] Show total cards in `sleeve` command when filtered
-- [x] Update sleeve type?!?!?!
-- [x] Maintain whitespace when updating sleeves
-- [x] Rename `colTitles` -> `colHeaders`
-- [x] Count and/or percentage of sleeve type - aiming for 100% ryker
-- [x] Improve `help` command: each command file should export help text to display here
-- [X] Hardcode list of titles for types & input error handing ( like `SleeveType`)
-- [ ] Refactor with [commander](https://github.com/tj/commander.js?tab=readme-ov-file#commanderjs)
-- [ ] CONFETTI when 100% sleeved & 100% Ryker
-- [ ] create function to fetch named column from data row
-- [ ] ??? Refactor to number count object instead of seperate vars
-- [ ] !!!TESTING!!!
-- [ ] ...MOAR!
