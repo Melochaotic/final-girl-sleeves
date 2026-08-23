@@ -3,9 +3,6 @@ import { parseCsv } from "../utils/csv.mts";
 import { formatSleeveType } from "../utils/formatting.mts";
 import { promtSleeveType } from "../utils/promts.mts";
 
-export const description =
-  "Show sleeve count totals; optionally filtered by `sleeveType`";
-
 export default async function () {
   const sleeveType = await promtSleeveType(["All"] as const);
   const formattedSleeveType = formatSleeveType(sleeveType);

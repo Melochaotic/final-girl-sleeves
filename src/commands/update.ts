@@ -4,8 +4,6 @@ import { parseCsv, saveAsCsv } from "../utils/csv.mts";
 import { formatSleeveType } from "../utils/formatting.mts";
 import { promtGameTitle, promtSleeveType } from "../utils/promts.mts";
 
-export const description = "Update `sleeveType` for given `title`";
-
 export default async function () {
   let hasChanged = false;
   const title = await promtGameTitle();
