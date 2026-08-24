@@ -1,9 +1,12 @@
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
+import { dirname, resolve } from "node:path";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
 
-const cwd = "/home/runner/work/final-girl-sleeves/final-girl-sleeves";
-const cli = `${cwd}/src/index.ts`;
+const currentDir = dirname(fileURLToPath(import.meta.url));
+const cwd = resolve(currentDir, "..");
+const cli = resolve(cwd, "src/index.ts");
 
 function runCli(args: string[]) {
   return spawnSync(
