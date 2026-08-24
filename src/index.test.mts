@@ -11,7 +11,12 @@ const cli = resolve(cwd, "src/index.ts");
 function runCli(args: string[]) {
   return spawnSync(
     process.execPath,
-    ["--disable-warning=ExperimentalWarning", cli, ...args],
+    [
+      "--disable-warning=ExperimentalWarning",
+      "--experimental-strip-types",
+      cli,
+      ...args,
+    ],
     { cwd, encoding: "utf8" },
   );
 }
