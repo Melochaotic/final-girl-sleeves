@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "rm -rf dist && pnpm tsc && node dist/index.js",
-    "test": "node --test src/**/*.test.mts"
+    "test": "node --test 'src/**/*.test.mts' 'src/*.test.mts'"
   },
   "bin": {
     "fgs": "./src/index.ts"
