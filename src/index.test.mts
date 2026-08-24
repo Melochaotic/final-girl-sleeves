@@ -38,12 +38,10 @@ for (const route of ["list", "detail", "count", "stats", "update"]) {
     const result = runCli([route, "--help"]);
     assert.equal(result.status, 0);
     assert.match(result.stdout, /Usage:/);
+
+    if (route === "stats") {
+      assert.match(result.stdout, /--card/);
+      assert.match(result.stdout, /--box/);
+    }
   });
 }
-
-test("stats route exposes card and box options", () => {
-  const result = runCli(["stats", "--help"]);
-  assert.equal(result.status, 0);
-  assert.match(result.stdout, /--card/);
-  assert.match(result.stdout, /--box/);
-});
