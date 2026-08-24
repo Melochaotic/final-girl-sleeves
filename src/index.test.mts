@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { spawnSync } from "node:child_process";
+import { type SpawnSyncReturns, spawnSync } from "node:child_process";
 import { dirname, resolve } from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
@@ -21,9 +21,15 @@ function runCli(args: string[]) {
   );
 }
 
+function assertCliSuccess(result: SpawnSyncReturns<string>) {
+  assert.equal(result.error, undefined);
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(result.stderr, "");
+}
+
 test("root help includes all routes", () => {
   const result = runCli(["--help"]);
-  assert.equal(result.status, 0);
+  assertCliSuccess(result);
 
   const output = result.stdout;
   assert.match(output, /\blist\b/);
@@ -33,15 +39,18 @@ test("root help includes all routes", () => {
   assert.match(output, /\bupdate\b/);
 });
 
+const routeExtraHelpChecks: Record<string, RegExp[]> = {
+  stats: [/--card/, /--box/],
+};
+
 for (const route of ["list", "detail", "count", "stats", "update"]) {
   test(`${route} route has help output`, () => {
     const result = runCli([route, "--help"]);
-    assert.equal(result.status, 0);
+    assertCliSuccess(result);
     assert.match(result.stdout, /Usage:/);
 
-    if (route === "stats") {
-      assert.match(result.stdout, /--card/);
-      assert.match(result.stdout, /--box/);
+    for (const check of routeExtraHelpChecks[route] ?? []) {
+      assert.match(result.stdout, check);
     }
   });
 }
