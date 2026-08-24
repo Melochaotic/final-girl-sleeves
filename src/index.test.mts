@@ -28,7 +28,7 @@ test("root help includes all routes", () => {
   assert.match(output, /\bupdate\b/);
 });
 
-for (const route of ["list", "detail", "count", "stats", "update"]) {
+for (const route of ["list", "detail", "count", "update"]) {
   test(`${route} route has help output`, () => {
     const result = runCli([route, "--help"]);
     assert.equal(result.status, 0);
@@ -39,6 +39,7 @@ for (const route of ["list", "detail", "count", "stats", "update"]) {
 test("stats route exposes card and box options", () => {
   const result = runCli(["stats", "--help"]);
   assert.equal(result.status, 0);
+  assert.match(result.stdout, /Usage:/);
   assert.match(result.stdout, /--card/);
   assert.match(result.stdout, /--box/);
 });
