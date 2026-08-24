@@ -5,8 +5,6 @@ import { parseCsv } from "../utils/csv.mts";
 import { formatSleeveType } from "../utils/formatting.mts";
 import { promtGameTitle } from "../utils/promts.mts";
 
-export const description = "Show details for given title";
-
 export default async function () {
   const searchTitle = await promtGameTitle();
 

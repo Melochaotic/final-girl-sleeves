@@ -1,23 +1,13 @@
-import { argv } from "process";
 import { styleText } from "util";
 import type { SleeveType } from "../types/TableStructure";
 import { parseCsv } from "../utils/csv.mts";
 import { formatPercentage, formatSleeveType } from "../utils/formatting.mts";
 
-export const args = "[--card | --box]";
-export const description = "Show current statistics of sleeving";
-
 type CountByType = {
   [key in SleeveType]: number;
 };
 
-export default function () {
-  const statType = argv[3];
-  const acceptedStatTypes = ["--card", "--box"];
-  if (statType && acceptedStatTypes.indexOf(statType) < 0) {
-    throw Error("UNKNOWN OPTION");
-  }
-
+export default function (options: { box?: boolean }) {
   let outputByType = "";
   let outputBySleeved = "";
   let total = 0;
@@ -32,8 +22,7 @@ export default function () {
   // Count titles per sleeve type
   rows.forEach((row) => {
     const sleeveType: SleeveType = row[2];
-    const totalCards =
-      statType === "--box" ? 1 : row[3] + row[4] + row[5] + row[6];
+    const totalCards = options.box ? 1 : row[3] + row[4] + row[5] + row[6];
 
     countByType[sleeveType] += totalCards;
     total += totalCards;

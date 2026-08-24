@@ -2,7 +2,7 @@
 
 ## Why do it?
 
-I wanted to ensure my [Final Girl Games](https://vanrydergames.com/pages/final-girl) were all protected with standard sleeves; downgrading from premium, and ended up handwriting a `.csv` file. But that was just the start...
+I wanted to ensure my [Final Girl Games](https://vanrydergames.com/pages/final-girl) were all protected with Ryker sleeves, and ended up handwriting a `.csv` file. But that was just the start...
 
 Then I remembered [@ThePrimeagen](https://github.com/ThePrimeagen) saying you should know how to open and edit a file in your chosen language... so lets manipulate it with [TypeScript](https://www.typescriptlang.org/) enhanced JS!
 
@@ -34,7 +34,7 @@ pnpm link
 Step 3. Now you can run the command globally:
 
 ```zsh
-fgs
+fgs --help
 ```
 
 ### Quick setup
@@ -70,13 +70,10 @@ pnpm dev
 
 I began this project with a few staples and reluctantly added some basic typescript compilation.
 
-Maybe eventually this will become an actual CLI program, using [commander](https://github.com/tj/commander.js).
+Runtime dependencies are kept to a minimum:
 
-## Development Philosophy
-
-I created this tool as a little bit of fun but also as a way to learn & explore the features.
-
-This is why I have specifically aimed to get this running **without** third party packages so it doesn't need a compile step. The only dependencies used are to aid with development only. This means its unlikely i will ever refactor to use commander.
+- [commander](https://github.com/tj/commander.js) for CLI routing
+- [inquirer](https://github.com/SBoudrias/Inquirer.js) for interactive prompts.
 
 ## Force PNPM because NPM is :poop:
 

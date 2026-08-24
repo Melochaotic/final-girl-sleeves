@@ -4,9 +4,6 @@ import { parseCsv } from "../utils/csv.mts";
 import { formatSleeveType } from "../utils/formatting.mts";
 import { promtSleeveType } from "../utils/promts.mts";
 
-export const description =
-  "List all game titles; optionally filtered by `sleeveType`";
-
 export default async function () {
   const sleeveType = await promtSleeveType(["All"] as const);
   const { rows } = parseCsv();
