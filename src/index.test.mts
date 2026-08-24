@@ -1,0 +1,41 @@
+import assert from "node:assert/strict";
+import { spawnSync } from "node:child_process";
+import test from "node:test";
+
+const cwd = "/home/runner/work/final-girl-sleeves/final-girl-sleeves";
+const cli = `${cwd}/src/index.ts`;
+
+function runCli(args: string[]) {
+  return spawnSync(
+    process.execPath,
+    ["--disable-warning=ExperimentalWarning", cli, ...args],
+    { cwd, encoding: "utf8" },
+  );
+}
+
+test("root help includes all routes", () => {
+  const result = runCli(["--help"]);
+  assert.equal(result.status, 0);
+
+  const output = result.stdout;
+  assert.match(output, /\blist\b/);
+  assert.match(output, /\bdetail\b/);
+  assert.match(output, /\bcount\b/);
+  assert.match(output, /\bstats\b/);
+  assert.match(output, /\bupdate\b/);
+});
+
+for (const route of ["list", "detail", "count", "stats", "update"]) {
+  test(`${route} route has help output`, () => {
+    const result = runCli([route, "--help"]);
+    assert.equal(result.status, 0);
+    assert.match(result.stdout, /Usage:/);
+  });
+}
+
+test("stats route exposes card and box options", () => {
+  const result = runCli(["stats", "--help"]);
+  assert.equal(result.status, 0);
+  assert.match(result.stdout, /--card/);
+  assert.match(result.stdout, /--box/);
+});
