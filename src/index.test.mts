@@ -1,7 +1,7 @@
-import assert from "node:assert/strict";
+import { describe, expect, it } from "vitest";
+
 import { type SpawnSyncReturns, spawnSync } from "node:child_process";
 import { dirname, resolve } from "node:path";
-import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 const currentDir = dirname(fileURLToPath(import.meta.url));
@@ -22,35 +22,37 @@ function runCli(args: string[]) {
 }
 
 function assertCliSuccess(result: SpawnSyncReturns<string>) {
-  assert.equal(result.error, undefined);
-  assert.equal(result.status, 0, result.stderr);
-  assert.equal(result.stderr, "");
+  expect(result.error).toBeUndefined();
+  expect(result.status).toBe(0);
+  expect(result.stderr).toBe("");
 }
 
-test("root help includes all routes", () => {
-  const result = runCli(["--help"]);
-  assertCliSuccess(result);
-
-  const output = result.stdout;
-  assert.match(output, /\blist\b/);
-  assert.match(output, /\bdetail\b/);
-  assert.match(output, /\bcount\b/);
-  assert.match(output, /\bstats\b/);
-  assert.match(output, /\bupdate\b/);
-});
-
-const routeExtraHelpChecks: Record<string, RegExp[]> = {
-  stats: [/--card/, /--box/],
-};
-
-for (const route of ["list", "detail", "count", "stats", "update"]) {
-  test(`${route} route has help output`, () => {
-    const result = runCli([route, "--help"]);
+describe("CLI", () => {
+  it("root help includes all routes", () => {
+    const result = runCli(["--help"]);
     assertCliSuccess(result);
-    assert.match(result.stdout, /Usage:/);
 
-    for (const check of routeExtraHelpChecks[route] ?? []) {
-      assert.match(result.stdout, check);
-    }
+    const output = result.stdout;
+    expect(output).toMatch(/\blist\b/);
+    expect(output).toMatch(/\bdetail\b/);
+    expect(output).toMatch(/\bcount\b/);
+    expect(output).toMatch(/\bstats\b/);
+    expect(output).toMatch(/\bupdate\b/);
   });
-}
+
+  const routeExtraHelpChecks: Record<string, RegExp[]> = {
+    stats: [/--card/, /--box/],
+  };
+
+  for (const route of ["list", "detail", "count", "stats", "update"]) {
+    it(`${route} route has help output`, () => {
+      const result = runCli([route, "--help"]);
+      assertCliSuccess(result);
+      expect(result.stdout).toMatch(/Usage:/);
+
+      for (const check of routeExtraHelpChecks[route] ?? []) {
+        expect(result.stdout).toMatch(check);
+      }
+    });
+  }
+});

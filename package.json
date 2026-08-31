@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "rm -rf dist && pnpm tsc && node dist/index.js",
-    "test": "node --test 'src/**/*.test.mts' 'src/*.test.mts'"
+    "test": "vitest run",
+      "test:watch": "vitest"
   },
   "bin": {
     "fgs": "./src/index.ts"
@@ -25,7 +26,8 @@
     "prettier": "3.5.2",
     "prettier-plugin-organize-imports": "^4.1.0",
     "typescript": "^5.8.2",
-    "typescript-eslint": "^8.27.0"
+    "typescript-eslint": "^8.27.0",
+    "vitest": "^4.1.11"
   },
   "dependencies": {
     "@inquirer/search": "^3.0.11",
