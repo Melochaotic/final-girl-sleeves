@@ -20,7 +20,7 @@ describe("titleCase", () => {
   });
 
   it("lowercases the remainder of each word", () => {
-    expect(titleCase("HELLO WORLD")).toBe("HELLO WORLD");
+    expect(titleCase("HELLO WORLD")).toBe("Hello World");
   });
 });
 
