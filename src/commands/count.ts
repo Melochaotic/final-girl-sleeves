@@ -16,8 +16,8 @@ export default async function () {
   for (const row of rows) {
     // remove count for target sleeveType
     if (sleeveType === row[2]) continue;
-    totalCountStandard += row[3];
-    totalCountEuro += row[4];
+    totalCountStandard += row[4];
+    totalCountEuro += row[3];
     totalCount70x121 += row[5];
     totalCount65x130 += row[6];
   }
