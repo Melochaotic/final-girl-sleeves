@@ -2,10 +2,10 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({ parseCsv: vi.fn() }));
 
-vi.mock("../../src/utils/csv.mts", () => ({ parseCsv: mocks.parseCsv }));
+vi.mock("../utils/csv.mts", () => ({ parseCsv: mocks.parseCsv }));
 
-import stats from "../../src/commands/stats.ts";
-import type { TableRow } from "../../src/types/TableStructure.ts";
+import stats from "./stats.ts";
+import type { TableRow } from "../types/TableStructure.ts";
 
 const rows: TableRow[] = [
   [2021, "Core", "Ryker", 1, 2, 3, 4],

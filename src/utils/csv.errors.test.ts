@@ -15,7 +15,7 @@ vi.mock("process", () => ({
   exit: mocks.exit,
 }));
 
-import { parseCsv, saveAsCsv } from "../src/utils/csv.mts";
+import { parseCsv, saveAsCsv } from "./csv.mts";
 
 const HEADER =
   "Year,Title,Sleeves,Euro Count,Standard Count,70*121 Count,65*130 Count";

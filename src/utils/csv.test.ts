@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { gameTitleArr, sleeveTypeArr } from "../src/types/TableStructure.ts";
-import { parseCsv } from "../src/utils/csv.mts";
+import { gameTitleArr, sleeveTypeArr } from "../types/TableStructure.ts";
+import { parseCsv } from "./csv.mts";
 
 describe("parseCsv", () => {
   const { colHeaders, rows } = parseCsv();

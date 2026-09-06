@@ -7,17 +7,17 @@ const mocks = vi.hoisted(() => ({
   saveAsCsv: vi.fn(),
 }));
 
-vi.mock("../../src/utils/promts.mts", () => ({
+vi.mock("../utils/promts.mts", () => ({
   promtGameTitle: mocks.promtGameTitle,
   promtSleeveType: mocks.promtSleeveType,
 }));
-vi.mock("../../src/utils/csv.mts", () => ({
+vi.mock("../utils/csv.mts", () => ({
   parseCsv: mocks.parseCsv,
   saveAsCsv: mocks.saveAsCsv,
 }));
 
-import update from "../../src/commands/update.ts";
-import type { TableRow } from "../../src/types/TableStructure.ts";
+import update from "./update.ts";
+import type { TableRow } from "../types/TableStructure.ts";
 
 describe("update", () => {
   let logSpy: ReturnType<typeof vi.spyOn>;

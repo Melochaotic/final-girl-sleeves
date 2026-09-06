@@ -8,8 +8,8 @@ const mocks = vi.hoisted(() => ({
 vi.mock("@inquirer/select", () => ({ default: mocks.select }));
 vi.mock("@inquirer/search", () => ({ default: mocks.search }));
 
-import { gameTitleArr, sleeveTypeArr } from "../src/types/TableStructure.ts";
-import { promtGameTitle, promtSleeveType } from "../src/utils/promts.mts";
+import { gameTitleArr, sleeveTypeArr } from "../types/TableStructure.ts";
+import { promtGameTitle, promtSleeveType } from "./promts.mts";
 
 type Option = { value: string; disabled: string | false };
 type SearchConfig = {

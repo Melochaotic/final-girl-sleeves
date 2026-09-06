@@ -3,7 +3,7 @@ import {
   formatPercentage,
   formatSleeveType,
   titleCase,
-} from "../src/utils/formatting.mts";
+} from "./formatting.mts";
 
 describe("titleCase", () => {
   it("capitalizes the first letter of each word", () => {

@@ -5,13 +5,13 @@ const mocks = vi.hoisted(() => ({
   parseCsv: vi.fn(),
 }));
 
-vi.mock("../../src/utils/promts.mts", () => ({
+vi.mock("../utils/promts.mts", () => ({
   promtSleeveType: mocks.promtSleeveType,
 }));
-vi.mock("../../src/utils/csv.mts", () => ({ parseCsv: mocks.parseCsv }));
+vi.mock("../utils/csv.mts", () => ({ parseCsv: mocks.parseCsv }));
 
-import count from "../../src/commands/count.ts";
-import type { TableRow } from "../../src/types/TableStructure.ts";
+import count from "./count.ts";
+import type { TableRow } from "../types/TableStructure.ts";
 
 const rows: TableRow[] = [
   [2021, "Core", "Ryker", 10, 20, 30, 40],

@@ -6,14 +6,14 @@ const mocks = vi.hoisted(() => ({
   exit: vi.fn(),
 }));
 
-vi.mock("../../src/utils/promts.mts", () => ({
+vi.mock("../utils/promts.mts", () => ({
   promtGameTitle: mocks.promtGameTitle,
 }));
-vi.mock("../../src/utils/csv.mts", () => ({ parseCsv: mocks.parseCsv }));
+vi.mock("../utils/csv.mts", () => ({ parseCsv: mocks.parseCsv }));
 vi.mock("process", () => ({ exit: mocks.exit }));
 
-import detail from "../../src/commands/detail.ts";
-import type { TableRow } from "../../src/types/TableStructure.ts";
+import detail from "./detail.ts";
+import type { TableRow } from "../types/TableStructure.ts";
 
 describe("detail", () => {
   let logSpy: ReturnType<typeof vi.spyOn>;
