@@ -17,7 +17,8 @@ vi.mock("process", () => ({
 
 import { parseCsv, saveAsCsv } from "../src/utils/csv.mts";
 
-const HEADER = "Year,Title,Sleeves,Euro Count,Standard Count,70*121 Count,65*130 Count";
+const HEADER =
+  "Year,Title,Sleeves,Euro Count,Standard Count,70*121 Count,65*130 Count";
 
 describe("parseCsv error handling", () => {
   beforeEach(() => {
@@ -42,9 +43,7 @@ describe("parseCsv error handling", () => {
   });
 
   it("exits with code 2 when a sleeve type is invalid", () => {
-    mocks.readFileSync.mockReturnValue(
-      `${HEADER}\n2021,Core,Cardboard,0,23,,`,
-    );
+    mocks.readFileSync.mockReturnValue(`${HEADER}\n2021,Core,Cardboard,0,23,,`);
     parseCsv();
     expect(mocks.exit).toHaveBeenCalledWith(2);
     expect(console.error).toHaveBeenCalledWith(

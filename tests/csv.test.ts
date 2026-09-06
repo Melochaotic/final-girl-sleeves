@@ -1,8 +1,5 @@
 import { describe, expect, it } from "vitest";
-import {
-  gameTitleArr,
-  sleeveTypeArr,
-} from "../src/types/TableStructure.ts";
+import { gameTitleArr, sleeveTypeArr } from "../src/types/TableStructure.ts";
 import { parseCsv } from "../src/utils/csv.mts";
 
 describe("parseCsv", () => {
