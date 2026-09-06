@@ -37,8 +37,8 @@ describe("count", () => {
       "Total cards to fully RYKER sleeve:\n\n" +
         "Type     | Count\n" +
         "---------|-------\n" +
-        "Standard | 6\n" +
-        "Euro     | 8\n" +
+        "Standard | 8\n" +
+        "Euro     | 6\n" +
         "70*121   | 10\n" +
         "65*130   | 12\n" +
         "---------|-------\n" +
@@ -55,8 +55,8 @@ describe("count", () => {
       "Total cards to fully ALL sleeve:\n\n" +
         "Type     | Count\n" +
         "---------|-------\n" +
-        "Standard | 16\n" +
-        "Euro     | 28\n" +
+        "Standard | 28\n" +
+        "Euro     | 16\n" +
         "70*121   | 40\n" +
         "65*130   | 52\n" +
         "---------|-------\n" +
