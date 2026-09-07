@@ -18,28 +18,38 @@ Step 1. Install dependencies:
 pnpm i
 ```
 
-Step 2. link command for global use
+Step 2. Register `fgs` globally:
 
 ```zsh
-pnpm link
+pnpm add -g .
 ```
 
 > [!NOTE]
-> To unlink the project run
+> `pnpm >= 11` removed the no-argument and `--global` forms of `pnpm link`;
+> `pnpm add -g .` is the supported way to make a local package's `bin`
+> available system-wide.
 >
-> ```zsh
-> pnpm rm -g final-girl-sleeves
-> ```
+> For a local directory pnpm links the package rather than copying it, so the
+> installed `fgs` runs your current source — code and the git-tracked
+> `data/` CSV stay in sync automatically. If you move or delete the checkout,
+> re-run `pnpm add -g .` to relink it.
 
-Step 3. Now you can run the command globally:
+Step 3. Run it from any directory:
 
 ```zsh
 fgs --help
 ```
 
+To unregister:
+
+```zsh
+pnpm rm -g final-girl-sleeves
+```
+
 > [!NOTE]
-> The `data/` CSV is located relative to the project, not your shell's current
-> directory, so the linked `fgs` command works from anywhere on your machine.
+> The command executes the TypeScript directly and needs Node >= 23.6 (native
+> type stripping). The `data/` CSV is resolved relative to the project, so
+> `fgs` works from anywhere on your machine.
 
 ### Quick setup
 
