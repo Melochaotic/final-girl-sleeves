@@ -37,6 +37,10 @@ Step 3. Now you can run the command globally:
 fgs --help
 ```
 
+> [!NOTE]
+> The `data/` CSV is located relative to the project, not your shell's current
+> directory, so the linked `fgs` command works from anywhere on your machine.
+
 ### Quick setup
 
 Since node V22.6.0 you can [run TypeScript natively](https://nodejs.org/en/learn/typescript/run-natively) so just run this to get started:

@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync } from "fs";
-import { resolve } from "path";
+import { dirname, resolve } from "path";
 import { exit } from "process";
+import { fileURLToPath } from "url";
 import {
   type GameTitle,
   gameTitleArr,
@@ -9,7 +10,10 @@ import {
   type TableRow,
 } from "../types/TableStructure.ts";
 
-const fileName = resolve("data/FinalGirlSleeves.csv");
+const fileName = resolve(
+  dirname(fileURLToPath(import.meta.url)),
+  "../../data/FinalGirlSleeves.csv",
+);
 
 type ParsedCsv = {
   colHeaders: string[];
