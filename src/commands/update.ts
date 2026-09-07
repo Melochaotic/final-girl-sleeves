@@ -1,6 +1,7 @@
 import { styleText } from "util";
 import { type SleeveType } from "../types/TableStructure.ts";
-import { parseCsv, saveAsCsv } from "../utils/csv.mts";
+import { celebrate } from "../utils/confetti.mts";
+import { isFullyRyker, parseCsv, saveAsCsv } from "../utils/csv.mts";
 import { formatSleeveType } from "../utils/formatting.mts";
 import { promtGameTitle, promtSleeveType } from "../utils/promts.mts";
 
@@ -28,6 +29,10 @@ export default async function () {
       styleText(["green"], "UPDATED:"),
       `"${title}" now has ${formatSleeveType(sleeveType)} sleeves`,
     );
+
+    if (isFullyRyker(rows)) {
+      await celebrate("You Ryker-sleeved the whole collection!");
+    }
   } else {
     console.log(
       styleText(["yellow"], "NO CHANGE:"),

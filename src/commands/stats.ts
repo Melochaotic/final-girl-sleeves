@@ -1,17 +1,19 @@
 import { styleText } from "util";
 import type { SleeveType } from "../types/TableStructure";
-import { parseCsv } from "../utils/csv.mts";
+import { celebrate } from "../utils/confetti.mts";
+import { isFullyRyker, parseCsv } from "../utils/csv.mts";
 import { formatPercentage, formatSleeveType } from "../utils/formatting.mts";
 
 type CountByType = {
   [key in SleeveType]: number;
 };
 
-export default function (options: { box?: boolean }) {
+export default async function (options: { box?: boolean }) {
   let outputByType = "";
   let outputBySleeved = "";
   let total = 0;
   const { rows } = parseCsv();
+  const fullyRyker = isFullyRyker(rows);
   const countByType: CountByType = {
     Ryker: 0,
     Premium: 0,
@@ -56,4 +58,8 @@ export default function (options: { box?: boolean }) {
       `----------|---------|-------\n` +
       `${styleText(["green"], "Total")}     |         | ${String(total).padStart(5)}\n`,
   );
+
+  if (fullyRyker) {
+    await celebrate("Every box is now Ryker sleeved!");
+  }
 }
