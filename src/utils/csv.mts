@@ -72,6 +72,10 @@ function validateRows(rows: string[][]): TableRow[] {
   return validatedRows;
 }
 
+export function isFullyRyker(rows: TableRow[]): boolean {
+  return rows.length > 0 && rows.every((row) => row[2] === "Ryker");
+}
+
 export function saveAsCsv({ colHeaders, rows }: ParsedCsv) {
   const titledRows = padColumns([colHeaders, ...rows]);
   const csv = titledRows.map((row) => row.join(", ")).join("\n");

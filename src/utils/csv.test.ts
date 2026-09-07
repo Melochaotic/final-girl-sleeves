@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
+import type { TableRow } from "../types/TableStructure.ts";
 import { gameTitleArr, sleeveTypeArr } from "../types/TableStructure.ts";
-import { parseCsv } from "./csv.mts";
+import { isFullyRyker, parseCsv } from "./csv.mts";
 
 describe("parseCsv", () => {
   const { colHeaders, rows } = parseCsv();
@@ -46,5 +47,26 @@ describe("parseCsv", () => {
     const core = rows.find((row) => row[1] === "Core");
     expect(core?.[5]).toBe(0);
     expect(core?.[6]).toBe(0);
+  });
+});
+
+describe("isFullyRyker", () => {
+  const rykerRow: TableRow = [2021, "Core", "Ryker", 0, 23, 0, 0];
+  const otherRow: TableRow = [2021, "Guest Stars", "No", 1, 1, 1, 1];
+
+  it("is false when the CSV has any non-Ryker boxes", () => {
+    expect(isFullyRyker(parseCsv().rows)).toBe(false);
+  });
+
+  it("is true when every box is Ryker sleeved", () => {
+    expect(isFullyRyker([rykerRow, rykerRow])).toBe(true);
+  });
+
+  it("is false when any box is not Ryker sleeved", () => {
+    expect(isFullyRyker([rykerRow, otherRow])).toBe(false);
+  });
+
+  it("is false for an empty collection", () => {
+    expect(isFullyRyker([])).toBe(false);
   });
 });
