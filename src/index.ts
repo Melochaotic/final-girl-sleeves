@@ -12,7 +12,7 @@ program
 
 program
   .command("list")
-  .description("List all game titles; optionally filtered by sleeveType")
+  .description("List all game titles grouped by sleeve type")
   .action(async () => {
     const { default: list } = await import("./commands/list." + ext);
     await list();

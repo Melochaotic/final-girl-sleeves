@@ -1,13 +1,9 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
-  promtSleeveType: vi.fn(),
   parseCsv: vi.fn(),
 }));
 
-vi.mock("../utils/promts.mts", () => ({
-  promtSleeveType: mocks.promtSleeveType,
-}));
 vi.mock("../utils/csv.mts", () => ({ parseCsv: mocks.parseCsv }));
 
 import list from "./list.ts";
@@ -33,13 +29,11 @@ describe("list", () => {
     return logSpy.mock.calls.map((call) => call[0]);
   }
 
-  it("groups every title by status when 'All' is selected", async () => {
-    mocks.promtSleeveType.mockResolvedValue("All");
-
+  it("groups every title by status", async () => {
     await list();
 
     expect(logged()).toEqual([
-      "4 game boxes with ALL sleeeves:",
+      "4 game boxes:",
       "-----------------------------",
       "RYKER:",
       "* Core",
@@ -51,8 +45,7 @@ describe("list", () => {
     ]);
   });
 
-  it("omits empty status groups when 'All' is selected", async () => {
-    mocks.promtSleeveType.mockResolvedValue("All");
+  it("omits empty status groups", async () => {
     mocks.parseCsv.mockReturnValue({
       colHeaders: [],
       rows: [
@@ -64,25 +57,12 @@ describe("list", () => {
     await list();
 
     expect(logged()).toEqual([
-      "2 game boxes with ALL sleeeves:",
+      "2 game boxes:",
       "-----------------------------",
       "RYKER:",
       "* Core",
       "NO:",
       "* Guest Stars",
-    ]);
-  });
-
-  it("filters titles by sleeve type", async () => {
-    mocks.promtSleeveType.mockResolvedValue("Premium");
-
-    await list();
-
-    expect(logged()).toEqual([
-      "2 game boxes with PREMIUM sleeeves:",
-      "-----------------------------",
-      "* Carnage at the Carnival",
-      "* Slaughter in the Groves",
     ]);
   });
 });
