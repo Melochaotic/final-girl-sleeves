@@ -35,7 +35,7 @@ export default async function () {
     const titles = titlesByStatus[status];
     if (!titles.length) continue;
 
-    console.log(`${formatSleeveType(status)}:`);
+    console.log(`${formatSleeveType(status)}: (${titles.length})`);
     titles
       .sort()
       .forEach((title) =>

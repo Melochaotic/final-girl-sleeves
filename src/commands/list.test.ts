@@ -35,12 +35,12 @@ describe("list", () => {
     expect(logged()).toEqual([
       "4 game boxes:",
       "-----------------------------",
-      "RYKER:",
+      "RYKER: (1)",
       "* Core",
-      "PREMIUM:",
+      "PREMIUM: (2)",
       "* Carnage at the Carnival",
       "* Slaughter in the Groves",
-      "NO:",
+      "NO: (1)",
       "* Guest Stars",
     ]);
   });
@@ -59,9 +59,9 @@ describe("list", () => {
     expect(logged()).toEqual([
       "2 game boxes:",
       "-----------------------------",
-      "RYKER:",
+      "RYKER: (1)",
       "* Core",
-      "NO:",
+      "NO: (1)",
       "* Guest Stars",
     ]);
   });
