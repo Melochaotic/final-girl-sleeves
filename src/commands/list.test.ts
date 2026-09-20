@@ -33,7 +33,7 @@ describe("list", () => {
     return logSpy.mock.calls.map((call) => call[0]);
   }
 
-  it("lists every title sorted when 'All' is selected", async () => {
+  it("groups every title by status when 'All' is selected", async () => {
     mocks.promtSleeveType.mockResolvedValue("All");
 
     await list();
@@ -41,10 +41,35 @@ describe("list", () => {
     expect(logged()).toEqual([
       "4 game boxes with ALL sleeeves:",
       "-----------------------------",
-      "* Carnage at the Carnival",
+      "RYKER:",
       "* Core",
-      "* Guest Stars",
+      "PREMIUM:",
+      "* Carnage at the Carnival",
       "* Slaughter in the Groves",
+      "NO:",
+      "* Guest Stars",
+    ]);
+  });
+
+  it("omits empty status groups when 'All' is selected", async () => {
+    mocks.promtSleeveType.mockResolvedValue("All");
+    mocks.parseCsv.mockReturnValue({
+      colHeaders: [],
+      rows: [
+        [2021, "Core", "Ryker", 0, 0, 0, 0],
+        [2025, "Guest Stars", "No", 0, 0, 0, 0],
+      ] satisfies TableRow[],
+    });
+
+    await list();
+
+    expect(logged()).toEqual([
+      "2 game boxes with ALL sleeeves:",
+      "-----------------------------",
+      "RYKER:",
+      "* Core",
+      "NO:",
+      "* Guest Stars",
     ]);
   });
 

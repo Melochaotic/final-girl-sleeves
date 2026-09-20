@@ -8,17 +8,23 @@ export function titleCase(str: string): string {
     .join(" ");
 }
 
-export function formatSleeveType(sleeveType: string): string {
+export function sleeveTypeColor(
+  sleeveType: string,
+): "red" | "green" | "yellow" {
   const compSleeveType = titleCase(sleeveType.trim());
 
-  const sleeveTypeColor =
-    compSleeveType === "No" // Always wear protection
-      ? "red"
-      : compSleeveType === "Ryker" // Aim to sleeve all w/ Ryker
-        ? "green"
-        : "yellow"; // Better than nothing
+  return compSleeveType === "No" // Always wear protection
+    ? "red"
+    : compSleeveType === "Ryker" // Aim to sleeve all w/ Ryker
+      ? "green"
+      : "yellow"; // Better than nothing
+}
 
-  return styleText([sleeveTypeColor, "bold"], sleeveType.toUpperCase());
+export function formatSleeveType(sleeveType: string): string {
+  return styleText(
+    [sleeveTypeColor(sleeveType), "bold"],
+    sleeveType.toUpperCase(),
+  );
 }
 
 export function formatPercentage(count: number, total: number): string {
